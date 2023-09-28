@@ -1,4 +1,4 @@
-const numArr = [1, 2, 3, 4];
+const numArr = [1, 2, 3, 4, 5, 6];
 
 // sum of all subarrays of length n
 
@@ -6,24 +6,19 @@ function generateSubArrays(arr, n) {
 	let arrayList = [];
 	let subArr = arr.slice(0, n);
 
-	console.log(subArr);
-
 	arrayList.push(subArr);
 
 	for (let i = 0; i < arr.length - n; i++) {
-		let newArr = subArr.slice(1);
+		let newArr = arr.slice(i + 1, i + n);
 		newArr.push(arr[i + n]);
-
-		console.log(newArr);
 
 		arrayList.push(newArr);
 	}
-	// console.log(arrayList);
 
 	return arrayList;
 }
 
-console.log(generateSubArrays(numArr, 4));
+console.log(generateSubArrays(numArr, 3));
 
 // // sum of all subarrays of length n
 // function sumSubArrays(arr, n) {
