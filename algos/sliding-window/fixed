@@ -1,8 +1,11 @@
+// Here we'll explore solving sub-array problems using the Sliding Window technique
+
 const numArr = [1, 2, 3, 4, 5, 6];
 
-// sum of all subarrays of length n
-
+// /*
 function generateSubArrays(arr, n) {
+	// generate all subarrays of length n
+
 	let arrayList = [];
 	let subArr = arr.slice(0, n);
 
@@ -18,26 +21,26 @@ function generateSubArrays(arr, n) {
 	return arrayList;
 }
 
-console.log(generateSubArrays(numArr, 3));
+console.log("generateSubArrays: ", generateSubArrays(numArr, 5));
 
-// // sum of all subarrays of length n
-// function sumSubArrays(arr, n) {
-// 	let total = 0;
-// 	let subArr = arr.slice(0, n);
+// */
 
-// 	for (let i = 0; i < subArr.length; i++) {
-// 		total += subArr[i];
-// 	}
-// 	console.log(total);
+function generateArrayOfSums(arr, n) {
+	//generate the sums of every subarray of length n
+	let sumList = [];
+	let currSum = 0;
 
-// 	for (let i = 1; i < arr.length - n + 1; i++) {
-// 		total += total + numArr[i + n - 1] - numArr[i - 1];
-// 		console.log(total);
-// 	}
-// 	console.log(total);
+	for (let i = 0; i < n; i++) {
+		currSum += arr[i];
+	}
+	sumList.push(currSum);
 
-// 	return total;
-// }
+	for (let i = 0; i < arr.length - n; i++) {
+		currSum = currSum - arr[i] + arr[i + n];
+		sumList.push(currSum);
+	}
 
-// sumSubArrays(numArr, 2);
-// // console.log(sumSubArrays(numArr, 2));
+	return sumList;
+}
+
+console.log("generateArrayOfSums: ", generateArrayOfSums(numArr, 5));
