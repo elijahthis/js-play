@@ -21,11 +21,15 @@ function generateSubArrays(arr, n) {
 	return arrayList;
 }
 
-console.log("generateSubArrays: ", generateSubArrays(numArr, 5));
+console.log("generateSubArrays: ", generateSubArrays(numArr, 2));
 
 // */
 
 function generateArrayOfSums(arr, n) {
+	if (n > arr.length)
+		throw new Error("Length of subArray cannot be greater than array length");
+	else if (n < 1) throw new Error("Length of subArray cannot be less than 1");
+
 	//generate the sums of every subarray of length n
 	let sumList = [];
 	let currSum = 0;
@@ -43,4 +47,4 @@ function generateArrayOfSums(arr, n) {
 	return sumList;
 }
 
-console.log("generateArrayOfSums: ", generateArrayOfSums(numArr, 5));
+console.log("generateArrayOfSums: ", generateArrayOfSums(numArr, 2));
